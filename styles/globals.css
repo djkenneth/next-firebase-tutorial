@@ -14,3 +14,16 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.container {
+  margin: 60px;
+  font-size: 40px;
+}
+
+.button {
+  font-size: 40px;
+}
+
+.button2 {
+  font-size: 30px;
+}
