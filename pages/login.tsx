@@ -1,9 +1,11 @@
+import { NextPage } from "next";
 import { useState } from "react";
 import { signup, login, useAuth, logout } from "../firebase/initFirebase";
 
-const Login: React.FC = () => {
+const Login: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const currentUser = useAuth();
+  console.log(useAuth());
+  const currentUser = useAuth() || null;
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
