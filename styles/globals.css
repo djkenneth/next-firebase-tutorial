@@ -7,8 +7,10 @@ body {
 }
 
 a {
-  color: inherit;
+  /* color: inherit; */
   text-decoration: none;
+  display: block;
+  padding: 10px;
 }
 
 * {
@@ -26,4 +28,9 @@ a {
 
 .button2 {
   font-size: 30px;
+}
+
+ul.header {
+  list-style: none;
+  display: flex;
 }
