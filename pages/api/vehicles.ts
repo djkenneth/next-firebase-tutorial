@@ -12,6 +12,7 @@ export default function getAllVehicles(
         { name: "Car" },
         { name: "Motor" },
         { name: "Truck" },
+        { name: "Electric Bike" },
       ]);
   } else {
     res.status(500).json({ message: "There is server error" });
