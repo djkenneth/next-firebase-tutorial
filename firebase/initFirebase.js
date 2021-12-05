@@ -22,14 +22,26 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
-
 const auth = getAuth();
+
 export const signup = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password);
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((user) => {
+      console.log(user);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 };
 
 export const login = (email, password) => {
-  signInWithEmailAndPassword(auth, email, password);
+  signInWithEmailAndPassword(auth, email, password)
+    .then((user) => {
+      console.log(user);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 export const logout = () => {
@@ -37,9 +49,16 @@ export const logout = () => {
 };
 
 export function useAuth() {
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState(null);
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (user) => setCurrentUser(user));
+    const unsub = onAuthStateChanged(auth, (userAuth) => {
+      if (userAuth) {
+        // console.log(userAuth);
+        setCurrentUser(userAuth);
+      } else {
+        setCurrentUser(null);
+      }
+    });
     return unsub;
   }, []);
 

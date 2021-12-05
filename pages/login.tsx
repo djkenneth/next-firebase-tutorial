@@ -1,27 +1,29 @@
 import { NextPage } from "next";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { signup, login, useAuth, logout } from "../firebase/initFirebase";
 
 const Login: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  console.log(useAuth());
   const currentUser = useAuth() || null;
 
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  // const [email, setEmail] = useState<string>("");
+  // const [password, setPassword] = useState<string>("");
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      await signup(email, password);
+      await signup(emailRef?.current.value, passwordRef?.current.value);
     } catch (err) {
       console.error(err);
     }
     setLoading(false);
   };
 
-  const handleLogout = async () => {
+  const handleLogout = async (e) => {
+    e.preventDefault();
     setLoading(true);
     try {
       await logout();
@@ -31,10 +33,11 @@ const Login: NextPage = () => {
     setLoading(false);
   };
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
     setLoading(true);
     try {
-      await login(email, password);
+      await login(emailRef?.current.value, passwordRef?.current.value);
     } catch (err) {
       console.error(err);
     }
@@ -46,16 +49,14 @@ const Login: NextPage = () => {
       <h5>Currently logged in as: {currentUser?.email}</h5>
       <form onSubmit={handleSignUp}>
         <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          ref={emailRef}
           type="email"
           placeholder="Enter your email"
           required
         />
         <br />
         <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          ref={passwordRef}
           type="password"
           placeholder="Enter your password"
           required

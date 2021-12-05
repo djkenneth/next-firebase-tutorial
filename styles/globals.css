@@ -34,3 +34,11 @@ ul.header {
   list-style: none;
   display: flex;
 }
+
+.show {
+  display: inline-block;
+}
+
+.hide {
+  display: none;
+}
