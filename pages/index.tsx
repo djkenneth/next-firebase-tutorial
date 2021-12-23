@@ -55,6 +55,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <h1 className="custom-color">ADD USER</h1>
         <input
           type="text"
           placeholder="Name"

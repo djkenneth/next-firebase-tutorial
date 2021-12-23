@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "../styles/main.scss";
 import Link from "next/link";
 import Router from "next/router";
 import NProgress from "nprogress";
