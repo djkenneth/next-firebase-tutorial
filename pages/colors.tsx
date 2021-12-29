@@ -26,7 +26,7 @@ const Dot: React.FC<Color> = ({ color }) => {
   return <span style={style}></span>;
 };
 
-function Colors() {
+const Colors = () => {
   const [colors, setColors] = useState([]);
   const [name, setName] = useState("");
   const [value, setValue] = useState("");
@@ -94,6 +94,6 @@ function Colors() {
       </ul>
     </div>
   );
-}
+};
 
 export default Colors;

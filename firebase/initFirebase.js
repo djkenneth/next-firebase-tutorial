@@ -25,31 +25,31 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 
-const auth = getAuth();
+export const auth = getAuth();
 
-export const signup = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((user) => {
-      console.log(user);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-};
+// export const signup = (email, password) => {
+//   createUserWithEmailAndPassword(auth, email, password)
+//     .then((user) => {
+//       console.log(user);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//     });
+// };
 
-export const login = (email, password) => {
-  signInWithEmailAndPassword(auth, email, password)
-    .then((user) => {
-      console.log(user);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+// export const login = (email, password) => {
+//   signInWithEmailAndPassword(auth, email, password)
+//     .then((user) => {
+//       console.log(user);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
 
-export const logout = () => {
-  return signOut(auth);
-};
+// export const logout = () => {
+//   return signOut(auth);
+// };
 
 export function useAuth() {
   const [currentUser, setCurrentUser] = useState(null);

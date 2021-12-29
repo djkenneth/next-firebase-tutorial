@@ -49,18 +49,18 @@ const Posts: NextPage = () => {
 
       <h3>Uploaded {progress} %</h3>
 
-      <Image
-        src={`https://firebasestorage.googleapis.com/v0/b/fir-tutorial-e6026.appspot.com/o/files%2Fpexels-luis-gomes-546819.jpg?alt=media&token=188c73f4-181f-4738-9788-92fcd46d3304`}
-        alt="Picture of the author"
+      {/* <Image
+        src="https://images.pexels.com/photos/10489571/pexels-photo-10489571.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
         width={500}
         height={500}
-      />
+        alt="Picture of the author"
+      /> */}
       {image && progress == 100 ? (
         <Image
           src={image}
           alt="Picture of the author"
-          width="auto"
-          height="auto"
+          width={500}
+          height={500}
         />
       ) : null}
     </div>
