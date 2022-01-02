@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
-import { register } from "../lib/authProvider";
+import useAuth from "../lib/authProvider";
 import useMounted from "../hooks/useMounted";
 import {
   Button,
@@ -13,6 +13,7 @@ import {
   Stack,
   useToast,
 } from "@chakra-ui/react";
+import withPublic from "../hooks/route/withPublic";
 
 // Icons
 import { FaGoogle } from "react-icons/fa";
@@ -20,8 +21,10 @@ import { FaGoogle } from "react-icons/fa";
 // Components
 import { Card } from "../components/Card";
 import DividerWithText from "../components/DividerWithText";
+import Layout from "../components/Layout";
 
 const Register = () => {
+  const { register } = useAuth();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +34,7 @@ const Register = () => {
   const mounted = useMounted();
 
   return (
-    <div>
+    <Layout>
       <Heading textAlign="center" my={12}>
         Register
       </Heading>
@@ -115,8 +118,9 @@ const Register = () => {
           Sign in with Google
         </Button>
       </Card>
-    </div>
+    </Layout>
   );
 };
 
+// export default withPublic(Register);
 export default Register;

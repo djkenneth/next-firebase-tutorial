@@ -81,9 +81,10 @@
 // export default Login;
 
 // -----------------------   LOGIN 2   --------------------------------- //
+import withPublic from "../hooks/route/withPublic";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
-import { login, signInWithGoogle } from "../lib/authProvider";
+import useAuth from "../lib/authProvider";
 import useMounted from "../hooks/useMounted";
 import NextLink from "next/link";
 import {
@@ -108,8 +109,10 @@ import { FaGoogle } from "react-icons/fa";
 // Components
 import { Card } from "../components/Card";
 import DividerWithText from "../components/DividerWithText";
+import Layout from "../components/Layout";
 
 const Login = () => {
+  const { login, signInWithGoogle } = useAuth();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -119,7 +122,7 @@ const Login = () => {
   const mounted = useMounted();
 
   return (
-    <div>
+    <Layout>
       <Heading textAlign="center" my={12}>
         Login
       </Heading>
@@ -139,7 +142,6 @@ const Login = () => {
             setIsSubmitting(true);
             login(email, password)
               .then((res) => {
-                console.log(res);
                 router.push("/profile");
               })
               .catch((err) => {
@@ -214,8 +216,9 @@ const Login = () => {
           Sign in with Google
         </Button>
       </Card>
-    </div>
+    </Layout>
   );
 };
 
-export default Login;
+export default withPublic(Login);
+// export default Login;

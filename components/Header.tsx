@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { logout, useAuth } from "../lib/authProvider";
+import useAuth from "../lib/authProvider";
 import {
   Box,
   HStack,
@@ -10,11 +9,13 @@ import {
 } from "@chakra-ui/react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import Navlink from "./Navlink";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const router = useRouter();
   const { toggleColorMode } = useColorMode();
 
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
 
   return (
     <Box
@@ -37,7 +38,7 @@ const Header = () => {
             onClick={async (e) => {
               e.preventDefault();
               // handle logout
-              logout();
+              await logout().then(() => router.push("/login"));
             }}
           />
         )}
@@ -50,36 +51,6 @@ const Header = () => {
         />
       </HStack>
     </Box>
-
-    // <div>
-    //   <ul className="header">
-    //     <li>
-    //       <Link href="/">
-    //         <a>Index</a>
-    //       </Link>
-    //     </li>
-    //     <li>
-    //       <Link href="/colors">
-    //         <a>Colors</a>
-    //       </Link>
-    //     </li>
-    //     <li>
-    //       <Link href="/posts">
-    //         <a>Posts</a>
-    //       </Link>
-    //     </li>
-    //     <li>
-    //       <Link href="/login">
-    //         <a>Login</a>
-    //       </Link>
-    //     </li>
-    //     <li>
-    //       <Link href="/vehicle">
-    //         <a>Vehicle</a>
-    //       </Link>
-    //     </li>
-    //   </ul>
-    // </div>
   );
 };
 

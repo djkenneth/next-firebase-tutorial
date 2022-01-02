@@ -4,6 +4,7 @@ import { storage } from "../firebase/initFirebase";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { useState } from "react";
 import Image from "next/image";
+// import { withProtected } from "../hooks/route";
 
 const Posts: NextPage = () => {
   const [progress, setProgress] = useState(0);
@@ -73,4 +74,5 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
+// export default withProtected(Posts);
 export default Posts;

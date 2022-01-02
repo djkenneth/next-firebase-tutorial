@@ -100,7 +100,6 @@
 
 // -----------------------  INDEX 2  --------------------------------- //
 import NextLink from "next/link";
-import { useAuth } from "../lib/authProvider";
 import {
   Badge,
   chakra,
@@ -113,14 +112,11 @@ import {
   Text,
   Link,
 } from "@chakra-ui/react";
+import Layout from "../components/Layout";
 
-export default function Home() {
-  const { currentUser } = useAuth();
+const Home = () => {
   return (
-    <>
-      <Heading>Home page</Heading>
-      <Text my={6}>{`The current user is: ${currentUser}`}</Text>
-
+    <Layout>
       <Heading>
         Firebase Authentication
         <chakra.span
@@ -183,6 +179,8 @@ export default function Home() {
           </NextLink>
         </ListItem>
       </List>
-    </>
+    </Layout>
   );
-}
+};
+
+export default Home;

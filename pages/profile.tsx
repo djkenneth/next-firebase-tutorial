@@ -1,14 +1,14 @@
-import { protectedRoute } from "../HOC/ProtectedRoute";
-
+import withPublic from "../hooks/route/withPublic";
 import { Badge, chakra, Code, Container, Heading } from "@chakra-ui/react";
-import { Card } from "../components/Card";
+import Layout from "../components/Layout";
+// import withProtected from "../hooks/route/withProtected";
 
-import { useAuth } from "../lib/authProvider";
+import useAuth from "../lib/authProvider";
 
-export default function Profile() {
+const Profile = () => {
   const { currentUser } = useAuth();
   return (
-    <>
+    <Layout>
       <Heading>
         Profile page
         <Badge colorScheme="green" fontSize="lg" mx={4}>
@@ -19,6 +19,9 @@ export default function Profile() {
       <Container maxW="container.lg" overflowX="auto" py={4}>
         <chakra.pre>{JSON.stringify(currentUser, null, 2)}</chakra.pre>
       </Container>
-    </>
+    </Layout>
   );
-}
+};
+
+export default withPublic(Profile);
+// export default Profile;

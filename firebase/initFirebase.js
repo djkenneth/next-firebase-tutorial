@@ -51,19 +51,19 @@ export const auth = getAuth();
 //   return signOut(auth);
 // };
 
-export function useAuth() {
-  const [currentUser, setCurrentUser] = useState(null);
-  useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (userAuth) => {
-      if (userAuth) {
-        // console.log(userAuth);
-        setCurrentUser(userAuth);
-      } else {
-        setCurrentUser(null);
-      }
-    });
-    return unsub;
-  }, []);
+// export function useAuth() {
+//   const [currentUser, setCurrentUser] = useState(null);
+//   useEffect(() => {
+//     const unsub = onAuthStateChanged(auth, (userAuth) => {
+//       if (userAuth) {
+//         // console.log(userAuth);
+//         setCurrentUser(userAuth);
+//       } else {
+//         setCurrentUser(null);
+//       }
+//     });
+//     return unsub;
+//   }, []);
 
-  return currentUser;
-}
+//   return currentUser;
+// }

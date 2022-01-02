@@ -9,6 +9,7 @@ import {
   setDoc,
   doc,
 } from "@firebase/firestore";
+// import { withProtected } from "../hooks/route";
 
 interface Color {
   color: string;
@@ -96,4 +97,5 @@ const Colors = () => {
   );
 };
 
+// export default withProtected(Colors);
 export default Colors;
