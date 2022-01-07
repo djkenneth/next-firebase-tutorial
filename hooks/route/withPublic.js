@@ -14,11 +14,6 @@ const withPublic = (Component) => {
     if (token && token !== null) {
       router.push("/profile");
       return null;
-    } else if (!token) {
-      console.log(typeof token);
-      console.log("nag wowork sa part na ito");
-      //   router.push("/");
-      return null;
     }
     return <Component {...props} />;
   };

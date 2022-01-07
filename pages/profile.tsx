@@ -23,5 +23,5 @@ const Profile = () => {
   );
 };
 
-export default withPublic(Profile);
+export default Profile;
 // export default Profile;

@@ -11,9 +11,11 @@ const withProtected = (Component) => {
       setToken(accessToken);
     }, []);
 
+    console.log(token);
+
     if (token == null) {
       router.push("/login");
-      //   return null;
+      return null;
     }
     return <Component {...props} />;
   };
