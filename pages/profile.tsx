@@ -1,12 +1,9 @@
-import withPublic from "../hooks/route/withPublic";
-import { Badge, chakra, Code, Container, Heading } from "@chakra-ui/react";
+import { Badge, chakra, Container, Heading } from "@chakra-ui/react";
 import Layout from "../components/Layout";
-// import withProtected from "../hooks/route/withProtected";
+import UseAuth from "../lib/authProvider";
 
-import useAuth from "../lib/authProvider";
-
-const Profile = () => {
-  const { currentUser } = useAuth();
+export default function Profile() {
+  const { currentUser } = UseAuth();
   return (
     <Layout>
       <Heading>
@@ -21,7 +18,6 @@ const Profile = () => {
       </Container>
     </Layout>
   );
-};
+}
 
-export default Profile;
-// export default Profile;
+Profile.requireAuth = true;

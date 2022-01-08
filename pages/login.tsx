@@ -81,10 +81,9 @@
 // export default Login;
 
 // -----------------------   LOGIN 2   --------------------------------- //
-import withPublic from "../hooks/route/withPublic";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
-import useAuth from "../lib/authProvider";
+import UseAuth from "../lib/authProvider";
 import useMounted from "../hooks/useMounted";
 import NextLink from "next/link";
 import {
@@ -112,7 +111,7 @@ import DividerWithText from "../components/DividerWithText";
 import Layout from "../components/Layout";
 
 const Login = () => {
-  const { login, signInWithGoogle } = useAuth();
+  const { login, signInWithGoogle } = UseAuth();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -220,5 +219,4 @@ const Login = () => {
   );
 };
 
-export default withPublic(Login);
-// export default Login;
+export default Login;

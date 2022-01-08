@@ -13,7 +13,6 @@ import {
   Stack,
   useToast,
 } from "@chakra-ui/react";
-import withPublic from "../hooks/route/withPublic";
 
 // Icons
 import { FaGoogle } from "react-icons/fa";
@@ -122,5 +121,4 @@ const Register = () => {
   );
 };
 
-// export default withPublic(Register);
 export default Register;
