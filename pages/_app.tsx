@@ -32,8 +32,8 @@ const customTheme = extendTheme({
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AuthContextProvider>
-      <ChakraProvider theme={customTheme}>
+    <ChakraProvider theme={customTheme}>
+      <AuthContextProvider>
         {/* if requireAuth property is present - protect the page */}
         {Component.requireAuth ? (
           <AuthGuard>
@@ -43,8 +43,8 @@ function MyApp({ Component, pageProps }) {
           // public page
           <Component {...pageProps} />
         )}
-      </ChakraProvider>
-    </AuthContextProvider>
+      </AuthContextProvider>
+    </ChakraProvider>
   );
 }
 

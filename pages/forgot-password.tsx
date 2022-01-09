@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import useAuth from "../lib/authProvider";
 
 import {
   Button,
@@ -19,6 +20,9 @@ import DividerWithText from "../components/DividerWithText";
 
 const ForgotPassword = () => {
   const router = useRouter();
+  const [email, setEmail] = useState("");
+  const toast = useToast();
+  const { forgotPassword } = useAuth();
 
   return (
     <div>
@@ -30,12 +34,39 @@ const ForgotPassword = () => {
           onSubmit={async (e) => {
             e.preventDefault();
             // your forgot password logic here
+            forgotPassword(email)
+              .then((res) => {
+                console.log(res);
+                toast({
+                  description:
+                    "Your email is successfully sent. Please check your email.",
+                  status: "success",
+                  duration: 5000,
+                  isClosable: true,
+                });
+              })
+              .catch((e) => {
+                console.error(e.message);
+                toast({
+                  description: e.message,
+                  status: "error",
+                  duration: 5000,
+                  isClosable: true,
+                });
+              });
           }}
         >
           <Stack spacing="6">
             <FormControl id="email">
               <FormLabel>Email address</FormLabel>
-              <Input name="email" type="email" autoComplete="email" required />
+              <Input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+              />
             </FormControl>
             <Button type="submit" colorScheme="primary" size="lg" fontSize="md">
               Submit

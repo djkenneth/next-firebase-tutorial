@@ -111,14 +111,22 @@ import DividerWithText from "../components/DividerWithText";
 import Layout from "../components/Layout";
 
 const Login = () => {
-  const { login, signInWithGoogle } = UseAuth();
+  const { currentUser, initializing, login, signInWithGoogle } = UseAuth();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const toast = useToast();
-
   const mounted = useMounted();
+
+  useEffect(() => {
+    if (!initializing) {
+      const accessToken = JSON.parse(sessionStorage.getItem("token"));
+      if (accessToken || currentUser) {
+        router.push("/profile");
+      }
+    }
+  }, [currentUser, initializing, router]);
 
   return (
     <Layout>
