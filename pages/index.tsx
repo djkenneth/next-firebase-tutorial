@@ -131,7 +131,7 @@ const Home = () => {
         <ListItem>
           Dark Mode enabled template using
           <Badge fontSize="inherit" colorScheme="teal" mx={2} textTransform="capitalize" borderRadius="md">
-            Chakra UI PRO
+            Chakra UI PRO Commit 1
           </Badge>
         </ListItem>
       </OrderedList>
