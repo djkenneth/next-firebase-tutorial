@@ -1,9 +1,15 @@
+import { useEffect } from 'react'
 import { Badge, chakra, Container, Heading } from "@chakra-ui/react";
 import Layout from "../components/Layout";
 import UseAuth from "../lib/authProvider";
 
-export default function Profile() {
+export default function Profile({ user }) {
   const { currentUser } = UseAuth();
+
+  useEffect(() => {
+    console.log('user', user)
+  }, [])
+
   return (
     <Layout>
       <Heading>
@@ -19,5 +25,14 @@ export default function Profile() {
     </Layout>
   );
 }
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      user: { name: 'kenneth', age: 24 }
+    }
+  }
+}
+
 
 Profile.requireAuth = true;
